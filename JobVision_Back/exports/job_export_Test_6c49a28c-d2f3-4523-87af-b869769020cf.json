@@ -1,0 +1,43 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "job option",
+  "executionEnabled" : true,
+  "id" : "6c49a28c-d2f3-4523-87af-b869769020cf",
+  "loglevel" : "INFO",
+  "name" : "Deploy Job Option",
+  "nodeFilterEditable" : true,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : true,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name:node-remote-max,node-remote-toky,node-remote-jean"
+  },
+  "nodesSelectedByDefault" : true,
+  "options" : [ {
+    "description" : "Choisir un environnement",
+    "name" : "env",
+    "regex" : "^(dev|stage|prod)$",
+    "required" : true,
+    "value" : "dev",
+    "values" : [ "dev", "stage", "prod" ],
+    "valuesListDelimiter" : ","
+  } ],
+  "plugins" : {
+    "ExecutionLifecycle" : { }
+  },
+  "scheduleEnabled" : false,
+  "sequence" : {
+    "commands" : [ {
+      "description" : "Test Option",
+      "exec" : "echo \"Environnement: ${option.env}\"",
+      "keepgoingOnSuccess" : true
+    } ],
+    "keepgoing" : true,
+    "strategy" : "node-first"
+  },
+  "uuid" : "6c49a28c-d2f3-4523-87af-b869769020cf"
+} ]

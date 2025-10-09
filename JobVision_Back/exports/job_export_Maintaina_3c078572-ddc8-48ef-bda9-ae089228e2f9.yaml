@@ -1,0 +1,38 @@
+- description: ''
+  executionEnabled: true
+  id: 3c078572-ddc8-48ef-bda9-ae089228e2f9
+  loglevel: INFO
+  name: Node Ping
+  nodeFilterEditable: true
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: false
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name:node-remote-max,node-remote-toky'
+  nodesSelectedByDefault: true
+  plugins:
+    ExecutionLifecycle: null
+  schedule:
+    month: '*'
+    time:
+      hour: '*'
+      minute: 0/2
+      seconds: '0'
+    weekday:
+      day: '*'
+    year: '*'
+  scheduleEnabled: true
+  sequence:
+    commands:
+    - description: Sleep
+      exec: |
+        sleep 15
+    - description: Serveur 1
+      exec: 'ping -c 1 192.168.88.20 >/dev/null 2>&1 && echo "192.168.88.20 : actif"
+        || echo "192.168.88.20 : inactif"'
+    keepgoing: false
+    strategy: node-first
+  uuid: 3c078572-ddc8-48ef-bda9-ae089228e2f9

@@ -1,0 +1,45 @@
+[ {
+  "description" : "Workflow avec plusieurs �tapes et gestion d'erreur � l'�criture",
+  "executionEnabled" : true,
+  "id" : "cf400822-18ec-46e1-b333-0e465775d4a2",
+  "loglevel" : "INFO",
+  "name" : "Job write in file",
+  "nodeFilterEditable" : true,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : false,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name:node-remote-toky,node-remote-max"
+  },
+  "nodesSelectedByDefault" : true,
+  "plugins" : {
+    "ExecutionLifecycle" : null
+  },
+  "scheduleEnabled" : true,
+  "sequence" : {
+    "commands" : [ {
+      "description" : "V�rifier si le fichier existe",
+      "keepgoingOnSuccess" : true,
+      "script" : "|\n          #!/bin/bash\n          FILE=\"/opt/rundeck.txt\"\n          USER=\"toky\"\n          if [ ! -f \"$FILE\" ]; then\n            echo \"Fichier inexistant, cr�ation...\"\n            sudo touch \"$FILE\"\n            sudo chown $USER:$USER \"$FILE\"\n            sudo chmod 644 \"$FILE\"\n          else\n            echo \"Fichier d�j� pr�sent.\"\n          fi"
+    }, {
+      "description" : "V�rifier les permissions du fichier",
+      "keepgoingOnSuccess" : true,
+      "script" : "|\n          #!/bin/bash\n          FILE=\"/opt/rundeck.txt\"\n          USER=\"toky\"\n          owner=$(stat -c \"%U\" \"$FILE\")\n          perms=$(stat -c \"%a\" \"$FILE\")\n          echo \"Propri�taire: $owner, Permissions: $perms\"\n          if [ \"$owner\" != \"$USER\" ]; then\n            echo \"Erreur : propri�taire du fichier n'est pas $USER !\" >&2\n            exit 1\n          fi"
+    }, {
+      "description" : "�crire dans le fichier",
+      "keepgoingOnSuccess" : true,
+      "script" : "|\n          #!/bin/bash\n          FILE=\"/opt/rundeck.txt\"\n          USER=\"toky\"\n          echo \"Ligne �crite par Rundeck (utilisateur $USER) le $(date +'%Y-%m-%d %H:%M:%S')\" >> \"$FILE\" 2>/tmp/rundeck_err.log || {\n            echo \"Erreur : permission refus�e pour �crire dans $FILE\" >&2\n            cat /tmp/rundeck_err.log >&2\n            exit 1\n          }"
+    }, {
+      "description" : "Afficher le contenu actuel du fichier",
+      "keepgoingOnSuccess" : true,
+      "script" : "|\n          #!/bin/bash\n          FILE=\"/opt/rundeck.txt\"\n          echo \"Contenu actuel du fichier :\"\n          cat \"$FILE\""
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "uuid" : "cf400822-18ec-46e1-b333-0e465775d4a2"
+} ]

@@ -1,0 +1,33 @@
+[ {
+  "description" : "Autre job",
+  "executionEnabled" : true,
+  "id" : "e8dc179a-fdd0-4053-a0dc-ff9821d7c67c",
+  "loglevel" : "INFO",
+  "name" : "Job R�f�renc� 3",
+  "nodeFilterEditable" : true,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : false,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name:localhost,node-remote-max,node-remote-toky"
+  },
+  "nodesSelectedByDefault" : true,
+  "plugins" : {
+    "ExecutionLifecycle" : null
+  },
+  "scheduleEnabled" : false,
+  "sequence" : {
+    "commands" : [ {
+      "description" : "Step 1",
+      "exec" : "echo bonjour",
+      "keepgoingOnSuccess" : true
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "uuid" : "e8dc179a-fdd0-4053-a0dc-ff9821d7c67c"
+} ]

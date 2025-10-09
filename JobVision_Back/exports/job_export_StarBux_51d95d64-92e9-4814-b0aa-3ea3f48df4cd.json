@@ -1,0 +1,40 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "job finance 1",
+  "executionEnabled" : true,
+  "id" : "51d95d64-92e9-4814-b0aa-3ea3f48df4cd",
+  "loglevel" : "INFO",
+  "name" : "Job Finance 1",
+  "nodeFilterEditable" : true,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : true,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name:node-remote-toky"
+  },
+  "nodesSelectedByDefault" : true,
+  "plugins" : {
+    "ExecutionLifecycle" : { }
+  },
+  "scheduleEnabled" : false,
+  "sequence" : {
+    "commands" : [ {
+      "description" : "Preparation",
+      "exec" : "echo \"Starting job...\"",
+      "keepgoingOnSuccess" : true
+    }, {
+      "exec" : "sleep 10"
+    }, {
+      "description" : "Hey",
+      "exec" : "echo \"coucou\"",
+      "keepgoingOnSuccess" : true
+    } ],
+    "keepgoing" : true,
+    "strategy" : "parallel"
+  },
+  "uuid" : "51d95d64-92e9-4814-b0aa-3ea3f48df4cd"
+} ]

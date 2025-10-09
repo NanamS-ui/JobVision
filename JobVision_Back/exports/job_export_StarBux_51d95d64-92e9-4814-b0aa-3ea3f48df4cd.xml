@@ -1,0 +1,40 @@
+<joblist>
+  <job>
+    <defaultTab>nodes</defaultTab>
+    <description>job finance 1</description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>true</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <id>51d95d64-92e9-4814-b0aa-3ea3f48df4cd</id>
+    <loglevel>INFO</loglevel>
+    <name>Job Finance 1</name>
+    <nodeFilterEditable>true</nodeFilterEditable>
+    <nodefilters>
+      <filter>name:node-remote-toky</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <plugins />
+    <scheduleEnabled>false</scheduleEnabled>
+    <sequence keepgoing='true' strategy='parallel'>
+      <command>
+        <description>Preparation</description>
+        <exec>echo "Starting job..."</exec>
+        <keepgoingOnSuccess>true</keepgoingOnSuccess>
+      </command>
+      <command>
+        <exec>sleep 10</exec>
+      </command>
+      <command>
+        <description>Hey</description>
+        <exec>echo "coucou"</exec>
+        <keepgoingOnSuccess>true</keepgoingOnSuccess>
+      </command>
+    </sequence>
+    <uuid>51d95d64-92e9-4814-b0aa-3ea3f48df4cd</uuid>
+  </job>
+</joblist>

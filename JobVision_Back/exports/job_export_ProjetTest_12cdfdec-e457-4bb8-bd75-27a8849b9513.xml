@@ -1,0 +1,57 @@
+<joblist>
+  <job>
+    <context>
+      <options preserveOrder='true'>
+        <option name='option' required='true' value='guest'>
+          <description>name</description>
+        </option>
+      </options>
+    </context>
+    <description></description>
+    <dispatch>
+      <excludePrecedence>true</excludePrecedence>
+      <keepgoing>true</keepgoing>
+      <rankOrder>ascending</rankOrder>
+      <successOnEmptyNodeFilter>false</successOnEmptyNodeFilter>
+      <threadcount>1</threadcount>
+    </dispatch>
+    <executionEnabled>true</executionEnabled>
+    <id>12cdfdec-e457-4bb8-bd75-27a8849b9513</id>
+    <loglevel>INFO</loglevel>
+    <name>Hello With Option</name>
+    <nodeFilterEditable>true</nodeFilterEditable>
+    <nodefilters>
+      <filter>name:node-remote-max,node-remote-toky,node-remote-jean</filter>
+    </nodefilters>
+    <nodesSelectedByDefault>true</nodesSelectedByDefault>
+    <plugins />
+    <scheduleEnabled>true</scheduleEnabled>
+    <sequence keepgoing='true' strategy='node-first'>
+      <command>
+        <description>Say Hello</description>
+        <script><![CDATA[#!/bin/bash
+
+# V�rifier que l'option est fournie
+if [ -z "${option}" ]; then
+    echo "Erreur : aucun nom fourni !"
+    echo "Usage : saisir l'option 'option'"
+    exit 1
+fi
+
+echo "D�but du job pour ${option}"
+
+# Pause 2 secondes
+sleep 2
+
+# G�n�rer le fichier texte
+OUTPUT_FILE="hello_${option}.txt"
+echo "Bonjour, ${option} ! Ceci est votre fichier g�n�r� par le workflow Rundeck." > "$OUTPUT_FILE"
+echo "Fichier cr�� : $OUTPUT_FILE"
+echo "Fin du job"
+]]></script>
+        <scriptargs />
+      </command>
+    </sequence>
+    <uuid>12cdfdec-e457-4bb8-bd75-27a8849b9513</uuid>
+  </job>
+</joblist>

@@ -1,0 +1,51 @@
+- description: g�rance des ventes
+  executionEnabled: true
+  id: 8666a4dc-14ba-43e3-ba82-d2eec8cfb5ad
+  loglevel: INFO
+  name: Workflow Ventes
+  nodeFilterEditable: true
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: true
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: name:node-remote-toky
+  nodesSelectedByDefault: true
+  plugins:
+    ExecutionLifecycle: null
+  scheduleEnabled: true
+  sequence:
+    commands:
+    - description: Ecrire CSV
+      keepgoingOnSuccess: true
+      script: |
+        #!/bin/bash
+        set -e
+
+        echo "=== Job 1 : G�n�ration du CSV (Java) ==="
+        cd ~/WorkflowSalesAutomation/job1-java-writecsv
+        mvn clean compile
+        mvn exec:java -Dexec.mainClass=com.workflow.job1.WriteCSV
+    - description: 'Import des donn�es '
+      keepgoingOnSuccess: true
+      script: |
+        #!/bin/bash
+        set -e
+
+        echo "=== Job 2 : Import en base et suppression CSV (PHP) ==="
+        cd ~/WorkflowSalesAutomation/job2-php-import
+        php import.php
+    - description: Export PDF
+      keepgoingOnSuccess: true
+      script: |
+        #!/bin/bash
+        set -e
+
+        echo "=== Job 3 : G�n�ration du rapport PDF (Python) ==="
+        cd ~/WorkflowSalesAutomation/job3-python-report
+        python3 generate_report.py
+    keepgoing: true
+    strategy: node-first
+  uuid: 8666a4dc-14ba-43e3-ba82-d2eec8cfb5ad

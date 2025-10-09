@@ -1,0 +1,51 @@
+[ {
+  "defaultTab" : "nodes",
+  "description" : "Job appel� en r�f�rence depuis un autre job",
+  "executionEnabled" : true,
+  "id" : "75b9a1dc-f5d0-4251-ad8e-8333f5f58123",
+  "loglevel" : "INFO",
+  "name" : "Job R�f�renc� 2",
+  "nodeFilterEditable" : true,
+  "nodefilters" : {
+    "dispatch" : {
+      "excludePrecedence" : true,
+      "keepgoing" : false,
+      "rankOrder" : "ascending",
+      "successOnEmptyNodeFilter" : false,
+      "threadcount" : "1"
+    },
+    "filter" : "name:node-remote-max,node-remote-toky"
+  },
+  "nodesSelectedByDefault" : true,
+  "plugins" : {
+    "ExecutionLifecycle" : { }
+  },
+  "schedule" : {
+    "month" : "*",
+    "time" : {
+      "hour" : "*",
+      "minute" : "*",
+      "seconds" : "0"
+    },
+    "weekday" : {
+      "day" : "*"
+    },
+    "year" : "*"
+  },
+  "scheduleEnabled" : false,
+  "sequence" : {
+    "commands" : [ {
+      "description" : "Step 1",
+      "exec" : "echo bonjour",
+      "keepgoingOnSuccess" : true
+    }, {
+      "script" : "#!/bin/bash\n\n# Crée un fichier Java\ncat > HelloWorld.java <<'EOF'\npublic class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello from Rundeck!\");\n    }\n}\nEOF\n\n# Compile le fichier\njavac HelloWorld.java\n\n# Pause de 5 secondes\nsleep 5\n\n# Exécute le programme\njava HelloWorld\n"
+    }, {
+      "script" : "#!/bin/bash\n\nset -e  # Arrêter le script à la première erreur\n\n# Fonction appelée en cas d'erreur\nerror_handler() {\n  echo \"❌ Erreur détectée dans le script à la ligne $1.\"\n  exit 1\n}\n\ntrap 'error_handler $LINENO' ERR\n\necho \"Étape 1 : démarrage du script...\"\n\nsleep 2\n\necho \"Étape 2 : ce message ne sera probablement pas affiché si l'erreur ci-dessus arrête le script\"\n"
+    } ],
+    "keepgoing" : false,
+    "strategy" : "node-first"
+  },
+  "timeZone" : "Asia/Baghdad",
+  "uuid" : "75b9a1dc-f5d0-4251-ad8e-8333f5f58123"
+} ]

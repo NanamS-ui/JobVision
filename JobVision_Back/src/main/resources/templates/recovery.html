@@ -1,0 +1,29 @@
+<div style="background-color:#fff3e0; border-left:4px solid #ff9800; padding:15px; margin-bottom:20px;">
+  <h2 style="margin:0; color:#ef6c00;">🔁 Job Recovered</h2>
+  <p style="margin:5px 0 0 0;">Le job <strong>{{jobName}}</strong> s'est rétabli après un échec précédent.</p>
+</div>
+
+<!-- Destinataires -->
+<div style="background-color:#f5f5f5; border:1px solid #ddd; border-radius:5px; padding:15px; margin-bottom:20px;">
+  <h3>📧 Destinataires de cette notification</h3>
+  {{contactsSection}}
+  {{groupesSection}}
+</div>
+
+{{attachSection}}
+
+<!-- Détails techniques -->
+<div style="background-color:#fafafa; border:1px solid #e0e0e0; border-radius:5px; padding:15px; margin-bottom:20px;">
+  <h3>🔧 Détails techniques</h3>
+  <table style="width:100%; border-collapse:collapse;">
+    <tr><td class="label">ID d'exécution :</td><td class="value">{{idExecution}}</td></tr>
+    <tr><td class="label">Horodatage :</td><td class="value">{{dateTime}}</td></tr>
+    <tr><td class="label">Statut :</td><td class="value">{{status}}</td></tr>
+  </table>
+</div>
+
+<hr>
+<p class="footer">
+  Ceci est une notification automatisée. Merci de ne pas y répondre.<br>
+  Généré par le système de monitoring JobVision
+</p>

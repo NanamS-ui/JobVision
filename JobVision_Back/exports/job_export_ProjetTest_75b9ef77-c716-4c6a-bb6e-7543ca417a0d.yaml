@@ -1,0 +1,52 @@
+- description: ''
+  executionEnabled: true
+  id: 75b9ef77-c716-4c6a-bb6e-7543ca417a0d
+  loglevel: INFO
+  name: Option Hello
+  nodeFilterEditable: true
+  nodefilters:
+    dispatch:
+      excludePrecedence: true
+      keepgoing: true
+      rankOrder: ascending
+      successOnEmptyNodeFilter: false
+      threadcount: '1'
+    filter: 'name:node-remote-max,node-remote-toky,node-remote-jean'
+  nodesSelectedByDefault: true
+  options:
+  - description: name
+    name: option
+    required: true
+    value: guest
+    values:
+    - dev
+    - admin
+    valuesListDelimiter: ','
+  plugins:
+    ExecutionLifecycle: null
+  scheduleEnabled: true
+  sequence:
+    commands:
+    - description: 'Hello '
+      script: |
+        #!/bin/bash
+        # V�rifier que l'option est fournie
+        if [ -z "${RD_OPTION_OPTION}" ]; then
+            echo "Erreur : aucun nom fourni !"
+            echo "Usage : saisir l'option 'option'"
+            exit 1
+        fi
+
+        echo "D�but du job pour ${RD_OPTION_OPTION}"
+
+        # Pause 2 secondes
+        sleep 2
+
+        # G�n�rer le fichier texte
+        OUTPUT_FILE="hello_${RD_OPTION_OPTION}.txt"
+        echo "Bonjour, ${RD_OPTION_OPTION} ! Ceci est votre fichier g�n�r� par le workflow Rundeck." > "$OUTPUT_FILE"
+        echo "Fichier cr�� : $OUTPUT_FILE"
+        echo "Fin du job"
+    keepgoing: true
+    strategy: node-first
+  uuid: 75b9ef77-c716-4c6a-bb6e-7543ca417a0d

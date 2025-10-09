@@ -1,0 +1,411 @@
+{
+  "job": {
+    "name": "Job Planification",
+    "description": "planification cronTab",
+    "logLevel": "INFO",
+    "executionEnabled": true,
+    "scheduleEnabled": true,
+    "priority": true,
+    "createdAt": "2025-05-26T12:00:00",
+    "updatedAt": "2025-05-26T12:00:00",
+    "project": {
+      "id": 1,
+      "name": "Test"
+    },
+    "workflow": {
+      "strategy": "node-first",
+      "keepgoing": true,
+      "description": "Workflow description",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "description": "Première étape",
+          "pluginType": "command",
+          "command": "echo Hello World",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 1"
+        },
+        {
+          "stepNumber": 2,
+          "description": "Deuxième étape avec script",
+          "pluginType": "script",
+          "script": "echo 'Script content here'",
+          "scriptType": "bash",
+          "args": "-v",
+          "interpreter": "/bin/bash",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 2"
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "idNode": 1,
+      "nodename": "node-remote-toky",
+      "hostname": "192.168.1.43",
+      "username": "toky",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 1
+    },
+    {
+      "idNode": 2,
+      "nodename": "node-remote-huhu",
+      "hostname": "192.168.1.43",
+      "username": "huhu",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 2
+    },
+    {
+      "idNode": 8,
+      "nodename": "node-remote-jean",
+      "hostname": "192.168.1.43",
+      "username": "jean",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 3
+    }
+  ]
+}
+
+{
+  "job": {
+    "uuid": "abc-123-job-uuid",
+    "name": "Job Référencé",
+    "description": "Job appelé en référence depuis un autre job",
+    "logLevel": "INFO",
+    "executionEnabled": true,
+    "scheduleEnabled": false,
+    "createdAt": "2025-05-25T10:00:00",
+    "updatedAt": "2025-05-25T10:00:00",
+    "project": {
+      "id": 1,
+      "name": "Test"
+    },
+    "workflow": {
+      "strategy": "node-first",
+      "keepgoing": false,
+      "description": "Workflow pour job référencé",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "description": "Commande simple",
+          "pluginType": "command",
+          "command": "echo 'Job référencé exécuté'",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": false,
+          "name": "Step 1"
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "idNode": 1,
+      "nodename": "node-remote-toky",
+      "hostname": "192.168.1.43",
+      "username": "toky",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 1
+    },
+    {
+      "idNode": 2,
+      "nodename": "node-remote-huhu",
+      "hostname": "192.168.1.43",
+      "username": "huhu",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 2
+    },
+    {
+      "idNode": 8,
+      "nodename": "node-remote-jean",
+      "hostname": "192.168.1.43",
+      "username": "jean",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 3
+    }
+  ]
+}
+
+
+{
+  "job": {
+    "name": "Job avec référence",
+    "description": "planification avec référence",
+    "logLevel": "INFO",
+    "executionEnabled": true,
+    "scheduleEnabled": true,
+    "createdAt": "2025-05-26T12:00:00",
+    "updatedAt": "2025-05-26T12:00:00",
+    "project": {
+      "id": 1,
+      "name": "Test"
+    },
+    "workflow": {
+      "strategy": "node-first",
+      "keepgoing": true,
+      "description": "Workflow description",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "description": "Première étape",
+          "pluginType": "command",
+          "command": "echo Hello World Tsika",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 1"
+        },
+        {
+          "stepNumber": 2,
+          "description": "Deuxième étape qui référence un job",
+          "pluginType": "jobref",
+          "jobref": {
+            "uuid": "abc-123-job-uuid"
+          },
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 2"
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "idNode": 1,
+      "nodename": "node-remote-toky",
+      "hostname": "192.168.1.43",
+      "username": "toky",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 1
+    },
+    {
+      "idNode": 2,
+      "nodename": "node-remote-huhu",
+      "hostname": "192.168.1.43",
+      "username": "huhu",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 2
+    },
+    {
+      "idNode": 8,
+      "nodename": "node-remote-jean",
+      "hostname": "192.168.1.43",
+      "username": "jean",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 3
+    }
+  ]
+}
+
+
+
+
+/*Plus de temps*/
+{
+  "job": {
+    "name": "Job Planification temps-3 cron parallèle",
+    "description": "planification cronTab avec plusieurs étapes longues",
+    "logLevel": "INFO",
+    "executionEnabled": true,
+    "scheduleEnabled": true,
+    "createdAt": "2025-05-26T12:00:00",
+    "updatedAt": "2025-05-26T12:00:00",
+    "cronExpression" : "0 0/1 * * * ?",
+    "project": {
+      "id": 1,
+      "name": "Test"
+    },
+    "workflow": {
+      "threadcount": 1,
+      "strategy": "parallel",
+      "keepgoing": true,
+      "description": "Workflow description étendue avec plusieurs étapes",
+      "steps": [
+        {
+          "stepNumber": 1,
+          "description": "Première étape (pause de 2 secondes)",
+          "pluginType": "command",
+          "command": "echo 'Step 1: Hello World' && sleep 2",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 1"
+        },
+        {
+          "stepNumber": 2,
+          "description": "Deuxième étape avec script (pause de 2 secondes)",
+          "pluginType": "script",
+          "script": "echo 'Step 2: Script execution' && sleep 2",
+          "scriptType": "bash",
+          "args": "-v",
+          "interpreter": "/bin/bash",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 2"
+        },
+        {
+          "stepNumber": 3,
+          "description": "Troisième étape (pause 2 secondes)",
+          "pluginType": "command",
+          "command": "echo 'Step 3: Quick check' && sleep 2",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 3"
+        },
+        {
+          "stepNumber": 4,
+          "description": "Quatrième étape (pause 2 secondes)",
+          "pluginType": "script",
+          "script": "echo 'Step 4: Long running script' && sleep 2",
+          "scriptType": "bash",
+          "args": "",
+          "interpreter": "/bin/bash",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 4"
+        },
+        {
+          "stepNumber": 5,
+          "description": "Cinquième étape (pause 2 secondes)",
+          "pluginType": "command",
+          "command": "echo 'Step 5: Finalize' && sleep 2",
+          "nodeStep": true,
+          "keepgoingOnSuccess": true,
+          "keepgoingOnFailure": "FALSE",
+          "name": "Step 5"
+        }
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "idNode": 1,
+      "nodename": "node-remote-toky",
+      "hostname": "192.168.1.43",
+      "username": "toky",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 1
+    },
+    {
+      "idNode": 2,
+      "nodename": "node-remote-huhu",
+      "hostname": "192.168.1.43",
+      "username": "huhu",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 2
+    },
+    {
+      "idNode": 8,
+      "nodename": "node-remote-jean",
+      "hostname": "192.168.1.43",
+      "username": "jean",
+      "osFamily": "unix",
+      "osName": "Linux",
+      "osArch": "x86_64",
+      "tags": "ssh",
+      "description": "Node de test pour YAML",
+      "enabled": 1,
+      "createdAt": null,
+      "updatedAt": null,
+      "projectId": 1,
+      "sshPathId": 3
+    }
+  ]
+}

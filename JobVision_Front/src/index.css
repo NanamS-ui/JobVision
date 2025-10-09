@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Animation personnalisées */
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-down {
+    animation: slide-down 0.2s ease-out;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+}
+
+/* Scrollbar personnalisée */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Support pour Firefox */
+.overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.gray.300') theme('colors.gray.100');
+}
+
+@media (prefers-color-scheme: dark) {
+    .overflow-y-auto {
+        scrollbar-color: theme('colors.gray.600') theme('colors.gray.800');
+    }
+}
+
+/* Tabs responsive - scroll horizontal sur mobile */
+.tabs-scroll {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.tabs-scroll::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Indicateur de scroll pour les tabs */
+.tabs-container {
+    position: relative;
+}
+
+.tabs-container::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dark .tabs-container::after {
+    background: linear-gradient(to left, rgba(31,41,55,0.8), transparent);
+}
+
+@media (max-width: 768px) {
+    .tabs-container::after {
+        opacity: 1;
+    }
+}
+
+/* Animation personnalisées */
+@keyframes slide-down {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-down {
+    animation: slide-down 0.2s ease-out;
+}
+
+.animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+}
+
+/* Scrollbar personnalisée */
+.overflow-y-auto::-webkit-scrollbar {
+    width: 6px;
+}
+
+.overflow-y-auto::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-600 rounded-full;
+}
+
+.overflow-y-auto::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-400 dark:bg-gray-500;
+}
+
+/* Support pour Firefox */
+.overflow-y-auto {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.gray.300') theme('colors.gray.100');
+}
+
+@media (prefers-color-scheme: dark) {
+    .overflow-y-auto {
+        scrollbar-color: theme('colors.gray.600') theme('colors.gray.800');
+    }
+}
+
+/* Tabs responsive - scroll horizontal sur mobile */
+.tabs-scroll {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.tabs-scroll::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Indicateur de scroll pour les tabs */
+.tabs-container {
+    position: relative;
+}
+
+.tabs-container::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 20px;
+    background: linear-gradient(to left, rgba(255,255,255,0.8), transparent);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dark .tabs-container::after {
+    background: linear-gradient(to left, rgba(31,41,55,0.8), transparent);
+}
+
+@media (max-width: 768px) {
+    .tabs-container::after {
+        opacity: 1;
+    }
+}
